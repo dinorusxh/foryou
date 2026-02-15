@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halo guys</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e1e2f, #302b63, #24243e);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin-top: 60px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.box:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+
+#message {
+    display: none;
+    margin: 30px auto;
+    width: 85%;
+    max-width: 500px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Cari Bintang Tersembunyi ⭐</h1>
+<p>Klik kotak sampai kamu menemukan bintang!</p>
+
+<div class="grid" id="grid"></div>
+
+<div id="message">
+    <h2>✨ Kamu Menemukannya! ✨</h2>
+    <p>Halo guys!  
+    Ini pesan spesial yang cuma muncul kalau kamu berhasil 😌🔥</p>
+</div>
+
+<script>
+let correct = Math.floor(Math.random() * 6);
+let grid = document.getElementById("grid");
+
+for(let i = 0; i < 6; i++){
+    let box = document.createElement("div");
+    box.classList.add("box");
+    box.innerHTML = "❓";
+
+    box.onclick = function(){
+        if(i == correct){
+            box.innerHTML = "⭐";
+            document.getElementById("message").style.display = "block";
+        } else {
+            box.innerHTML = "✖";
+        }
+    };
+
+    grid.appendChild(box);
+}
+</script>
+
+</body>
+</html>
